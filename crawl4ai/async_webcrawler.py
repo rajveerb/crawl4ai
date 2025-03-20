@@ -306,6 +306,7 @@ class AsyncWebCrawler:
                 pdf_data = None
                 extracted_content = None
                 start_time = time.perf_counter()
+                start_ts = time.time() * 1e6
 
                 # Try to get cached result if appropriate
                 if cache_context.should_read():
@@ -416,6 +417,8 @@ class AsyncWebCrawler:
 
                     crawl_result.success = bool(html)
                     crawl_result.session_id = getattr(config, "session_id", None)
+                    crawl_result.start_ts = start_ts
+                    crawl_result.end_ts = time.time() *1e6
 
                     self.logger.success(
                         message="{url:.50}... | Status: {status} | Total: {timing}",

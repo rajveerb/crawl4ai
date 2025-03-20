@@ -159,6 +159,8 @@ class CrawlResult(BaseModel):
     ssl_certificate: Optional[SSLCertificate] = None
     dispatch_result: Optional[DispatchResult] = None
     redirected_url: Optional[str] = None
+    start_ts: Optional[float] = None
+    end_ts: Optional[float] = None
 
     class Config:
         arbitrary_types_allowed = True
